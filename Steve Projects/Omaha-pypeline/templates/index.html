@@ -30,7 +30,8 @@
                 <h3>{{ name.replace('_', ' ').title() }}</h3>
                 {% if data %}
                     {% if data[0] is mapping or data[0] is sequence %}
-                        <table class="results-table">
+                    <div class="table-scroll">   
+						<table class="results-table">
                             <thead>
                                 <tr>
                                     {% for key in data[0].keys() %}
@@ -48,6 +49,7 @@
                                 {% endfor %}
                             </tbody>
                         </table>
+					</div>
                     {% else %}
                         <pre>{{ data }}</pre>
                     {% endif %}
