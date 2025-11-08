@@ -1,5 +1,5 @@
-/* --- SUPER-NUKE: Force all table text horizontal --- */
-th, td {
+/* --- SUPER-NUKE: Never Allow Vertical Table Text, Ever --- */
+th, td, .results-table th, .results-table td {
     writing-mode: initial !important;
     text-orientation: initial !important;
     white-space: normal !important;
@@ -7,13 +7,10 @@ th, td {
     overflow-wrap: break-word !important;
     font-size: 1em !important;
     letter-spacing: normal !important;
-    /* Optional: set a sensible line height */
     line-height: 1.2 !important;
-    /* Just in case! */
     display: table-cell !important;
 }
-/* Bonus: Remove any inherited vertical/horizontal transforms or rotates */
-th *, td * {
+th *, td *, .results-table th *, .results-table td * {
     transform: none !important;
     writing-mode: initial !important;
     text-orientation: initial !important;
@@ -22,23 +19,28 @@ th *, td * {
     line-height: 1.2 !important;
 }
 
-/* You can keep the rest of your styles below! */
+/* -----------------------------------
+   Secret Agent Themed App Styling
+-------------------------------------- */
 body {
     background: #131922;
     color: #eaf6ff;
     font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
 }
+
 .container {
     margin: 3em auto;
-    max-width: 620px;
+    max-width: 700px;
     background: linear-gradient(130deg, #182535 80%, #1e293b 100%);
     padding: 2.5em 2em;
     border-radius: 18px;
     box-shadow: 0 6px 36px #000a;
     border: 2px solid #263859;
 }
+
 h1 {
     color: #69a7ff;
     text-shadow: 1px 1px 5px #05204190;
@@ -47,7 +49,29 @@ h1 {
     font-weight: 700;
     margin-bottom: 0.5em;
     text-align: center;
+    font-family: 'Segoe UI Semibold', 'Roboto', Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
+
+h2, h3 {
+    color: #82c4ff;
+    letter-spacing: 1px;
+    margin-top: 1.2em;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+h2 {
+    font-size: 1.35em;
+    border-bottom: 1.5px solid #263859;
+    padding-bottom: 0.15em;
+    margin-bottom: 0.6em;
+}
+h3 {
+    font-size: 1.15em;
+    margin-bottom: 0.5em;
+}
+
 .form-table {
     width: 100%;
     margin: 2em 0 1em 0;
@@ -57,22 +81,25 @@ h1 {
 .form-table td {
     padding: 0.4em 0.8em;
     vertical-align: middle;
+    font-size: 1.08em;
 }
+
 input[type="text"] {
     background: #1c2230;
     color: #b8daff;
     border: 1.5px solid #263859;
     border-radius: 7px;
-    font-size: 1.12em;
+    font-size: 1.13em;
     padding: 0.5em 0.9em;
     width: 97%;
     outline: none;
-    transition: border 0.15s;
+    transition: border 0.15s, background 0.15s;
 }
 input[type="text"]:focus {
     border: 1.5px solid #69a7ff;
     background: #232f40;
 }
+
 button {
     background: linear-gradient(95deg, #00387a 65%, #0095ff 110%);
     color: #eaf6ff;
@@ -85,12 +112,14 @@ button {
     cursor: pointer;
     margin-top: 10px;
     box-shadow: 0 2px 12px #00387a33;
-    transition: background 0.17s, color 0.17s;
+    transition: background 0.17s, color 0.17s, transform 0.08s;
 }
 button:hover {
     background: linear-gradient(85deg, #0095ff 75%, #00387a 120%);
     color: #131922;
+    transform: translateY(-2px) scale(1.03);
 }
+
 .results-section {
     margin-top: 2.5em;
     background: #181d28;
@@ -99,6 +128,7 @@ button:hover {
     padding: 1.2em 1.6em;
     border: 1.5px solid #263859;
 }
+
 .table-scroll {
     width: 100%;
     overflow-x: auto;
@@ -106,13 +136,16 @@ button:hover {
     border-radius: 10px;
     box-shadow: 0 2px 12px #0003;
     background: #192237;
-    padding-bottom: 1px;
+    padding-bottom: 1px; /* helps shadow effect on scroll */
 }
+
 .results-table {
     min-width: 700px;
     width: 100%;
     border-collapse: collapse;
+    font-size: 1em;
 }
+
 .results-table th, .results-table td {
     border: 1px solid #263859;
     padding: 0.7em 1em;
@@ -123,7 +156,9 @@ button:hover {
     font-size: 1em;
     letter-spacing: normal;
     white-space: normal;
+    /* Never vertical text here! */
 }
+
 .results-table th {
     background: #00387a;
     color: #82c4ff;
@@ -131,19 +166,76 @@ button:hover {
     position: sticky;
     top: 0;
     z-index: 2;
+    text-transform: capitalize;
 }
+
 .results-table tr:nth-child(even) td {
     background: #1b2534;
 }
 .results-table tr:hover td {
     background: #26436e;
     color: #fff;
+    transition: background 0.13s;
 }
-@media (max-width: 500px) {
-    .results-table th,
-    .results-table td {
-        font-size: 0.92em;
-        max-width: 120px;
-        padding: 0.4em 0.3em;
+em, .empty-message {
+    color: #8ba4be;
+    font-style: italic;
+    margin: 1.2em 0;
+    display: block;
+    text-align: center;
+    opacity: 0.9;
+}
+
+/* --------- Scrollbar --------- */
+::-webkit-scrollbar {
+    width: 10px;
+    background: #131922;
+}
+::-webkit-scrollbar-thumb {
+    background: #00387a;
+    border-radius: 5px;
+}
+
+/* --------- Responsive Design --------- */
+@media (max-width: 950px) {
+    .container {
+        max-width: 99vw;
+        padding: 1em 0.5em;
+    }
+    .results-table th, .results-table td {
+        font-size: 0.97em;
+        max-width: 140px;
+        padding: 0.5em 0.4em;
     }
 }
+@media (max-width: 700px) {
+    h1 { font-size: 1.5em; }
+    .container { padding: 1.2em 0.2em; }
+    .results-table { min-width: 420px; }
+    .results-section { padding: 1em 0.4em; }
+}
+@media (max-width: 500px) {
+    .results-table th, .results-table td {
+        font-size: 0.91em;
+        max-width: 90px;
+        padding: 0.35em 0.15em;
+    }
+    .table-scroll { padding-bottom: 0; }
+}
+
+/* --------- Miscellaneous Polishing --------- */
+pre {
+    background: #151e29;
+    color: #eaf6ff;
+    padding: 0.8em 1em;
+    border-radius: 6px;
+    font-size: 1em;
+    overflow-x: auto;
+    margin: 1em 0;
+    border: 1px solid #263859;
+}
+
+::-webkit-input-placeholder { color: #6eaaff; opacity: 0.8; }
+::-moz-placeholder { color: #6eaaff; opacity: 0.8; }
+:-ms-input-placeholder { color: #6eaaff; opacity: 0.8; }
+::placeholder { color: #6eaaff; opacity: 0.8; }
