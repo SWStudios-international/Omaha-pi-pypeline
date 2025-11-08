@@ -1,3 +1,4 @@
+/* ===== PI Dashboard Global Styles ===== */
 body {
     background: #131922;
     color: #eaf6ff;
@@ -82,6 +83,7 @@ button:hover {
     border: 1.5px solid #263859;
 }
 
+/* ===== Scrollable Table Wrapper ===== */
 .table-scroll {
     width: 100%;
     overflow-x: auto;
@@ -89,27 +91,33 @@ button:hover {
     border-radius: 10px;
     box-shadow: 0 2px 12px #0003;
     background: #192237;
-    padding-bottom: 1px; /* helps shadow effect on scroll */
+    padding-bottom: 1px;
 }
 
+/* ===== Results Table: Guaranteed Horizontal ===== */
 .results-table {
     min-width: 700px;
     width: 100%;
     border-collapse: collapse;
+    table-layout: auto;
 }
 
-.results-table th, .results-table td {
+.results-table th,
+.results-table td {
     border: 1px solid #263859;
     padding: 0.7em 1em;
     text-align: left;
     background: #1c2230;
     max-width: 220px;
     word-break: break-word;
-    writing-mode: initial !important;
-    text-orientation: initial !important;
-    white-space: normal;
+    white-space: normal !important;
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed !important;
+    transform: none !important;
+    rotate: none !important;
+    vertical-align: top;
+    /* Prevent vertical orientation in any browser! */
 }
-
 
 .results-table th {
     background: #00387a;
@@ -118,6 +126,7 @@ button:hover {
     position: sticky;
     top: 0;
     z-index: 2;
+    border-bottom: 2.5px solid #69a7ff;
 }
 
 .results-table tr:nth-child(even) td {
@@ -127,12 +136,37 @@ button:hover {
     background: #26436e;
     color: #fff;
 }
+
+/* ===== Custom Scrollbar for Table Scrolls ===== */
+::-webkit-scrollbar {
+    width: 10px;
+    background: #131922;
+}
+::-webkit-scrollbar-thumb {
+    background: #00387a;
+    border-radius: 5px;
+}
+
+/* ===== Responsive Tweaks for Mobile ===== */
+@media (max-width: 800px) {
+  .container {
+    max-width: 99vw;
+    padding: 1em 0.3em;
+  }
+  .results-table th,
+  .results-table td {
+    padding: 0.6em 0.4em;
+    font-size: 0.97em;
+    max-width: 120px;
+  }
+  .results-table {
+    min-width: 400px;
+  }
+}
 @media (max-width: 500px) {
   .results-table th,
   .results-table td {
     font-size: 0.92em;
-    max-width: 120px;
     padding: 0.4em 0.3em;
   }
 }
-
