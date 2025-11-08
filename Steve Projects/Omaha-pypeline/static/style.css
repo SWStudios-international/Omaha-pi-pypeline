@@ -1,4 +1,28 @@
-/* ===== PI Dashboard Global Styles ===== */
+/* --- SUPER-NUKE: Force all table text horizontal --- */
+th, td {
+    writing-mode: initial !important;
+    text-orientation: initial !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    font-size: 1em !important;
+    letter-spacing: normal !important;
+    /* Optional: set a sensible line height */
+    line-height: 1.2 !important;
+    /* Just in case! */
+    display: table-cell !important;
+}
+/* Bonus: Remove any inherited vertical/horizontal transforms or rotates */
+th *, td * {
+    transform: none !important;
+    writing-mode: initial !important;
+    text-orientation: initial !important;
+    white-space: normal !important;
+    letter-spacing: normal !important;
+    line-height: 1.2 !important;
+}
+
+/* You can keep the rest of your styles below! */
 body {
     background: #131922;
     color: #eaf6ff;
@@ -6,7 +30,6 @@ body {
     margin: 0;
     padding: 0;
 }
-
 .container {
     margin: 3em auto;
     max-width: 620px;
@@ -16,7 +39,6 @@ body {
     box-shadow: 0 6px 36px #000a;
     border: 2px solid #263859;
 }
-
 h1 {
     color: #69a7ff;
     text-shadow: 1px 1px 5px #05204190;
@@ -26,19 +48,16 @@ h1 {
     margin-bottom: 0.5em;
     text-align: center;
 }
-
 .form-table {
     width: 100%;
     margin: 2em 0 1em 0;
     border-collapse: separate;
     border-spacing: 0 10px;
 }
-
 .form-table td {
     padding: 0.4em 0.8em;
     vertical-align: middle;
 }
-
 input[type="text"] {
     background: #1c2230;
     color: #b8daff;
@@ -54,7 +73,6 @@ input[type="text"]:focus {
     border: 1.5px solid #69a7ff;
     background: #232f40;
 }
-
 button {
     background: linear-gradient(95deg, #00387a 65%, #0095ff 110%);
     color: #eaf6ff;
@@ -73,7 +91,6 @@ button:hover {
     background: linear-gradient(85deg, #0095ff 75%, #00387a 120%);
     color: #131922;
 }
-
 .results-section {
     margin-top: 2.5em;
     background: #181d28;
@@ -82,8 +99,6 @@ button:hover {
     padding: 1.2em 1.6em;
     border: 1.5px solid #263859;
 }
-
-/* ===== Scrollable Table Wrapper ===== */
 .table-scroll {
     width: 100%;
     overflow-x: auto;
@@ -93,32 +108,22 @@ button:hover {
     background: #192237;
     padding-bottom: 1px;
 }
-
-/* ===== Results Table: Guaranteed Horizontal ===== */
 .results-table {
     min-width: 700px;
     width: 100%;
     border-collapse: collapse;
-    table-layout: auto;
 }
-
-.results-table th,
-.results-table td {
+.results-table th, .results-table td {
     border: 1px solid #263859;
     padding: 0.7em 1em;
     text-align: left;
     background: #1c2230;
     max-width: 220px;
     word-break: break-word;
-    white-space: normal !important;
-    writing-mode: horizontal-tb !important;
-    text-orientation: mixed !important;
-    transform: none !important;
-    rotate: none !important;
-    vertical-align: top;
-    /* Prevent vertical orientation in any browser! */
+    font-size: 1em;
+    letter-spacing: normal;
+    white-space: normal;
 }
-
 .results-table th {
     background: #00387a;
     color: #82c4ff;
@@ -126,9 +131,7 @@ button:hover {
     position: sticky;
     top: 0;
     z-index: 2;
-    border-bottom: 2.5px solid #69a7ff;
 }
-
 .results-table tr:nth-child(even) td {
     background: #1b2534;
 }
@@ -136,37 +139,11 @@ button:hover {
     background: #26436e;
     color: #fff;
 }
-
-/* ===== Custom Scrollbar for Table Scrolls ===== */
-::-webkit-scrollbar {
-    width: 10px;
-    background: #131922;
-}
-::-webkit-scrollbar-thumb {
-    background: #00387a;
-    border-radius: 5px;
-}
-
-/* ===== Responsive Tweaks for Mobile ===== */
-@media (max-width: 800px) {
-  .container {
-    max-width: 99vw;
-    padding: 1em 0.3em;
-  }
-  .results-table th,
-  .results-table td {
-    padding: 0.6em 0.4em;
-    font-size: 0.97em;
-    max-width: 120px;
-  }
-  .results-table {
-    min-width: 400px;
-  }
-}
 @media (max-width: 500px) {
-  .results-table th,
-  .results-table td {
-    font-size: 0.92em;
-    padding: 0.4em 0.3em;
-  }
+    .results-table th,
+    .results-table td {
+        font-size: 0.92em;
+        max-width: 120px;
+        padding: 0.4em 0.3em;
+    }
 }
