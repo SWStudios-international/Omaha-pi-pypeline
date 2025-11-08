@@ -1,0 +1,116 @@
+body {
+    background: #131922;
+    color: #eaf6ff;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 3em auto;
+    max-width: 620px;
+    background: linear-gradient(130deg, #182535 80%, #1e293b 100%);
+    padding: 2.5em 2em;
+    border-radius: 18px;
+    box-shadow: 0 6px 36px #000a;
+    border: 2px solid #263859;
+}
+
+h1 {
+    color: #69a7ff;
+    text-shadow: 1px 1px 5px #05204190;
+    letter-spacing: 1px;
+    font-size: 2.6em;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+.form-table {
+    width: 100%;
+    margin: 2em 0 1em 0;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.form-table td {
+    padding: 0.4em 0.8em;
+    vertical-align: middle;
+}
+
+input[type="text"] {
+    background: #1c2230;
+    color: #b8daff;
+    border: 1.5px solid #263859;
+    border-radius: 7px;
+    font-size: 1.12em;
+    padding: 0.5em 0.9em;
+    width: 97%;
+    outline: none;
+    transition: border 0.15s;
+}
+input[type="text"]:focus {
+    border: 1.5px solid #69a7ff;
+    background: #232f40;
+}
+
+button {
+    background: linear-gradient(95deg, #00387a 65%, #0095ff 110%);
+    color: #eaf6ff;
+    border: none;
+    border-radius: 7px;
+    font-size: 1.15em;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    padding: 0.7em 2em;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 12px #00387a33;
+    transition: background 0.17s, color 0.17s;
+}
+button:hover {
+    background: linear-gradient(85deg, #0095ff 75%, #00387a 120%);
+    color: #131922;
+}
+
+.results-section {
+    margin-top: 2.5em;
+    background: #181d28;
+    border-radius: 10px;
+    box-shadow: 0 2px 14px #0008;
+    padding: 1.2em 1.6em;
+    border: 1.5px solid #263859;
+}
+
+table.results-table {
+    width: 100%;
+    margin: 0.6em 0;
+    border-collapse: collapse;
+}
+.results-table th, .results-table td {
+    border: 1px solid #263859;
+    padding: 0.7em 0.7em;
+    text-align: left;
+    background: #1c2230;
+}
+.results-table th {
+    background: #00387a;
+    color: #82c4ff;
+    font-weight: 700;
+}
+.results-table tr:nth-child(even) td {
+    background: #1b2534;
+}
+.results-table tr:hover td {
+    background: #26436e;
+    color: #fff;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    background: #131922;
+}
+::-webkit-scrollbar-thumb {
+    background: #00387a;
+    border-radius: 5px;
+}
