@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Omaha Pi pypeline</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>
     <div class="container">
@@ -31,7 +32,7 @@
                 {% if data %}
                     {% if data[0] is mapping or data[0] is sequence %}
                     <div class="table-scroll">   
-						<table class="results-table">
+                        <table class="results-table">
                             <thead>
                                 <tr>
                                     {% for key in data[0].keys() %}
@@ -43,13 +44,14 @@
                                 {% for row in data %}
                                 <tr>
                                     {% for value in row.values() %}
-                                    <td>{{ value }}</td>
+                                    <!-- Prevent newlines, vertical text, and collapse all whitespace to single spaces -->
+                                    <td>{{ value|string|replace('\n', ' ')|replace('\r', ' ')|replace('\t', ' ') }}</td>
                                     {% endfor %}
                                 </tr>
                                 {% endfor %}
                             </tbody>
                         </table>
-					</div>
+                    </div>
                     {% else %}
                         <pre>{{ data }}</pre>
                     {% endif %}
